@@ -1,0 +1,4 @@
+--patch-module
+SecondMavenArchetypeProject=_
+--add-reads
+SecondMavenArchetypeProject=ALL-UNNAMED
