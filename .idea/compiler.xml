@@ -7,8 +7,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="SecondMavenArchetypeProject" />
+        <module name="MavenJenkinsTestRepo" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="SecondMavenArchetypeProject" target="19" />
+    </bytecodeTargetLevel>
   </component>
 </project>
