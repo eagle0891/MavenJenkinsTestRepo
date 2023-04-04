@@ -1,7 +1,7 @@
 Feature: Search For Product
 
   Background: Navigate to site
-    Given the user is on the website 'https://www.amazon.co.uk' using 'remote'
+    Given the user is on the website 'https://www.amazon.co.uk' using 'seleniumGrid'
 
   Scenario: Search for a Product
     When  the user searches for a product 'watch'

@@ -86,6 +86,26 @@ protected WebDriver driver;
                 driver = new RemoteWebDriver(new URL("https://batbsauto_IG7R8rDiiDf:vNhrigLoLtzizHEKhTti@hub-cloud.browserstack.com/wd/hub"), caps);
                 driver.manage().window().maximize();
             }
+            case "seleniumGrid" -> {
+                //set up remote test envs
+                DesiredCapabilities caps = new DesiredCapabilities();
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("--ignore-ssl-errors=yes");
+                options.addArguments("--ignore-certificate-errors");
+                options.addArguments("--disable-web-security");
+                options.addArguments("--test-type");
+                options.addArguments("allow-running-insecure-content");
+                caps.setCapability(ChromeOptions.CAPABILITY, options);
+
+                caps.setCapability("browser", "chrome");
+                caps.setCapability("browser_version", "100");
+                caps.setCapability("os", "windows");
+                caps.setCapability("os_version", "11");
+                caps.setCapability("seleniumVersion", "4.2.2");
+                caps.setCapability("project", "BAT");
+                driver = new RemoteWebDriver(new URL("http://13.51.158.223:4445"), caps);
+                driver.manage().window().maximize();
+            }
         }
     }
 
@@ -213,6 +233,7 @@ protected WebDriver driver;
     private static final By BREADCRUMB_BACK_LINK = By.cssSelector(ReadFrom.propertiesFile("css", "breadcrumbBackLink"));
 
     public void confirmPdpPageIsDisplayed(){
+        waitForExpectedElement(BREADCRUMB_BACK_LINK, Duration.ofSeconds(10));
         assertTrue(driver.findElement(BREADCRUMB_BACK_LINK).isDisplayed());
     }
 
