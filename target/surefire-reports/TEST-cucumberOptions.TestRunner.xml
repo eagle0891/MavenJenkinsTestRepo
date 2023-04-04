@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="cucumberOptions.TestRunner" time="48.816" tests="22" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="cucumberOptions.TestRunner" time="47.069" tests="22" errors="2" skipped="0" failures="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="19.0.2+7-44"/>
@@ -60,26 +60,50 @@
     <property name="sun.cpu.endian" value="little"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase name="request contains &apos;application/json&apos; and &apos;allStarWarsFilmsQuery&apos;, and request is sent to &apos;/.netlify/functions/index&apos;, and response returns status &apos;200&apos; and body &apos;data.allFilms.films[0].title&apos; matches &apos;A New Hope&apos;" classname="firstStarWarsTest #1" time="3.561"/>
-  <testcase name="firstStarWarsTest #1" classname="firstStarWarsTest #1" time="3.565"/>
-  <testcase name="request contains &apos;application/json&apos; and &apos;allStarWarsFilmsQuery&apos;, and request is sent to &apos;/.netlify/functions/index&apos;, and response returns status &apos;200&apos; and body &apos;data.allFilms.films[1].title&apos; matches &apos;The Empire Strikes Back&apos;" classname="firstStarWarsTest #2" time="0.344"/>
-  <testcase name="firstStarWarsTest #2" classname="firstStarWarsTest #2" time="0.344"/>
-  <testcase name="request contains &apos;application/json&apos; and &apos;allStarWarsFilmsQuery&apos;, and request is sent to &apos;/.netlify/functions/index&apos;, and response returns status &apos;200&apos; and body &apos;data.allFilms.films[2].title&apos; matches &apos;Return of the Jedi&apos;" classname="firstStarWarsTest #3" time="0.367"/>
-  <testcase name="firstStarWarsTest #3" classname="firstStarWarsTest #3" time="0.367"/>
-  <testcase name="request contains &apos;application/json&apos; and &apos;allStarWarsFilmsQuery&apos;, and request is sent to &apos;/.netlify/functions/index&apos;, and response returns status &apos;200&apos; and body &apos;data.allFilms.films[3].title&apos; matches &apos;The Phantom Menace&apos;" classname="firstStarWarsTest #4" time="0.334"/>
-  <testcase name="firstStarWarsTest #4" classname="firstStarWarsTest #4" time="0.334"/>
-  <testcase name="request contains &apos;application/json&apos; and &apos;allStarWarsFilmsQuery&apos;, and request is sent to &apos;/.netlify/functions/index&apos;, and response returns status &apos;200&apos; and body &apos;data.allFilms.films[4].title&apos; matches &apos;Attack of the Clones&apos;" classname="firstStarWarsTest #5" time="0.334"/>
-  <testcase name="firstStarWarsTest #5" classname="firstStarWarsTest #5" time="0.334"/>
-  <testcase name="request contains &apos;application/json&apos; and &apos;allStarWarsFilmsQuery&apos;, and request is sent to &apos;/.netlify/functions/index&apos;, and response returns status &apos;200&apos; and body &apos;data.allFilms.films[5].title&apos; matches &apos;Revenge of the Sith&apos;" classname="firstStarWarsTest #6" time="0.332"/>
-  <testcase name="firstStarWarsTest #6" classname="firstStarWarsTest #6" time="0.332"/>
-  <testcase name="request contains &apos;application/json&apos;, &apos;x-hasura-admin-secret&apos;, &apos;3m1kpYOAi6QkJsjCC1qpzHe0KTd1cDVffdlkqKq3DMrFHnpXxAAtpMNym7ZNHzKk&apos;, &apos;albumsListQuery&apos;, and request is sent to &apos;/v1/graphql&apos;, and response returns status &apos;200&apos; and body &apos;data.Album.Tracks[0].TrackId[0]&apos; matches &apos;1&apos;" classname="firstHasuraTest" time="7.227"/>
-  <testcase name="firstHasuraTest" classname="firstHasuraTest" time="7.227"/>
-  <testcase name="Hasura employee request contains &apos;application/json&apos;, &apos;x-hasura-admin-secret&apos;, &apos;3m1kpYOAi6QkJsjCC1qpzHe0KTd1cDVffdlkqKq3DMrFHnpXxAAtpMNym7ZNHzKk&apos;, &apos;employeeListQuery&apos;, and request is sent to &apos;/v1/graphql&apos;, and response returns status &apos;200&apos; and body &apos;data.Employee.Email[0]&apos; matches &apos;nancy@chinookcorp.com&apos;" classname="HasuraEmployeeTest" time="1.093"/>
-  <testcase name="HasuraEmployeeTest" classname="HasuraEmployeeTest" time="1.093"/>
-  <testcase name="the user is on the website &apos;https://www.amazon.co.uk&apos; using &apos;chrome&apos;" classname="Search for a Product" time="9.277"/>
-  <testcase name="the user searches for a product &apos;watch&apos;" classname="Search for a Product" time="5.245"/>
-  <testcase name="the search results should be displayed" classname="Search for a Product" time="12.083"/>
-  <testcase name="I click on the product &apos;casio&apos;" classname="Search for a Product" time="7.901"/>
-  <testcase name="the PDP should be displayed" classname="Search for a Product" time="0.065"/>
-  <testcase name="Search for a Product" classname="Search for a Product" time="0.065"/>
+  <testcase name="request contains &apos;application/json&apos; and &apos;allStarWarsFilmsQuery&apos;, and request is sent to &apos;/.netlify/functions/index&apos;, and response returns status &apos;200&apos; and body &apos;data.allFilms.films[0].title&apos; matches &apos;A New Hope&apos;" classname="firstStarWarsTest #1" time="4.205"/>
+  <testcase name="firstStarWarsTest #1" classname="firstStarWarsTest #1" time="4.212"/>
+  <testcase name="request contains &apos;application/json&apos; and &apos;allStarWarsFilmsQuery&apos;, and request is sent to &apos;/.netlify/functions/index&apos;, and response returns status &apos;200&apos; and body &apos;data.allFilms.films[1].title&apos; matches &apos;The Empire Strikes Back&apos;" classname="firstStarWarsTest #2" time="0.376"/>
+  <testcase name="firstStarWarsTest #2" classname="firstStarWarsTest #2" time="0.376"/>
+  <testcase name="request contains &apos;application/json&apos; and &apos;allStarWarsFilmsQuery&apos;, and request is sent to &apos;/.netlify/functions/index&apos;, and response returns status &apos;200&apos; and body &apos;data.allFilms.films[2].title&apos; matches &apos;Return of the Jedi&apos;" classname="firstStarWarsTest #3" time="0.381"/>
+  <testcase name="firstStarWarsTest #3" classname="firstStarWarsTest #3" time="0.381"/>
+  <testcase name="request contains &apos;application/json&apos; and &apos;allStarWarsFilmsQuery&apos;, and request is sent to &apos;/.netlify/functions/index&apos;, and response returns status &apos;200&apos; and body &apos;data.allFilms.films[3].title&apos; matches &apos;The Phantom Menace&apos;" classname="firstStarWarsTest #4" time="0.361"/>
+  <testcase name="firstStarWarsTest #4" classname="firstStarWarsTest #4" time="0.361"/>
+  <testcase name="request contains &apos;application/json&apos; and &apos;allStarWarsFilmsQuery&apos;, and request is sent to &apos;/.netlify/functions/index&apos;, and response returns status &apos;200&apos; and body &apos;data.allFilms.films[4].title&apos; matches &apos;Attack of the Clones&apos;" classname="firstStarWarsTest #5" time="0.366"/>
+  <testcase name="firstStarWarsTest #5" classname="firstStarWarsTest #5" time="0.366"/>
+  <testcase name="request contains &apos;application/json&apos; and &apos;allStarWarsFilmsQuery&apos;, and request is sent to &apos;/.netlify/functions/index&apos;, and response returns status &apos;200&apos; and body &apos;data.allFilms.films[5].title&apos; matches &apos;Revenge of the Sith&apos;" classname="firstStarWarsTest #6" time="0.342"/>
+  <testcase name="firstStarWarsTest #6" classname="firstStarWarsTest #6" time="0.342"/>
+  <testcase name="request contains &apos;application/json&apos;, &apos;x-hasura-admin-secret&apos;, &apos;3m1kpYOAi6QkJsjCC1qpzHe0KTd1cDVffdlkqKq3DMrFHnpXxAAtpMNym7ZNHzKk&apos;, &apos;albumsListQuery&apos;, and request is sent to &apos;/v1/graphql&apos;, and response returns status &apos;200&apos; and body &apos;data.Album.Tracks[0].TrackId[0]&apos; matches &apos;1&apos;" classname="firstHasuraTest" time="7.284"/>
+  <testcase name="firstHasuraTest" classname="firstHasuraTest" time="7.284"/>
+  <testcase name="Hasura employee request contains &apos;application/json&apos;, &apos;x-hasura-admin-secret&apos;, &apos;3m1kpYOAi6QkJsjCC1qpzHe0KTd1cDVffdlkqKq3DMrFHnpXxAAtpMNym7ZNHzKk&apos;, &apos;employeeListQuery&apos;, and request is sent to &apos;/v1/graphql&apos;, and response returns status &apos;200&apos; and body &apos;data.Employee.Email[0]&apos; matches &apos;nancy@chinookcorp.com&apos;" classname="HasuraEmployeeTest" time="1.06"/>
+  <testcase name="HasuraEmployeeTest" classname="HasuraEmployeeTest" time="1.06"/>
+  <testcase name="the user is on the website &apos;https://www.amazon.co.uk&apos; using &apos;remote&apos;" classname="Search for a Product" time="18.208"/>
+  <testcase name="the user searches for a product &apos;watch&apos;" classname="Search for a Product" time="10.538"/>
+  <testcase name="the search results should be displayed" classname="Search for a Product" time="2.943"/>
+  <testcase name="I click on the product &apos;casio&apos;" classname="Search for a Product" time="0"/>
+  <testcase name="the PDP should be displayed" classname="Search for a Product" time="0.13">
+    <error message="no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;#breadcrumb-back-link&quot;}&#10;  (Session info: chrome=100.0.4896.127)&#10;For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element&#10;Build info: version: &apos;4.8.1&apos;, revision: &apos;8ebccac989&apos;&#10;System info: os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;19.0.2&apos;&#10;Driver info: org.openqa.selenium.remote.RemoteWebDriver&#10;Command: [80f5d755e6b6bef00a192ec3b56f3cd04870cd5c, findElement {using=css selector, value=#breadcrumb-back-link}]&#10;Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 100.0.4896.127, chrome: {chromedriverVersion: 100.0.4896.20 (f9d71f93d32a..., userDataDir: C:\Windows\proxy\scoped_dir...}, goog:chromeOptions: {debuggerAddress: localhost:5015}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true, webdriver.remote.sessionid: 80f5d755e6b6bef00a192ec3b56...}&#10;Session ID: 80f5d755e6b6bef00a192ec3b56f3cd04870cd5c" type="org.openqa.selenium.NoSuchElementException">org.openqa.selenium.NoSuchElementException: 
+no such element: Unable to locate element: {"method":"css selector","selector":"#breadcrumb-back-link"}
+  (Session info: chrome=100.0.4896.127)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.8.1', revision: '8ebccac989'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '19.0.2'
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Command: [80f5d755e6b6bef00a192ec3b56f3cd04870cd5c, findElement {using=css selector, value=#breadcrumb-back-link}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 100.0.4896.127, chrome: {chromedriverVersion: 100.0.4896.20 (f9d71f93d32a..., userDataDir: C:\Windows\proxy\scoped_dir...}, goog:chromeOptions: {debuggerAddress: localhost:5015}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true, webdriver.remote.sessionid: 80f5d755e6b6bef00a192ec3b56...}
+Session ID: 80f5d755e6b6bef00a192ec3b56f3cd04870cd5c
+</error>
+  </testcase>
+  <testcase name="Search for a Product" classname="Search for a Product" time="0.132">
+    <error message="no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;#breadcrumb-back-link&quot;}&#10;  (Session info: chrome=100.0.4896.127)&#10;For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element&#10;Build info: version: &apos;4.8.1&apos;, revision: &apos;8ebccac989&apos;&#10;System info: os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;19.0.2&apos;&#10;Driver info: org.openqa.selenium.remote.RemoteWebDriver&#10;Command: [80f5d755e6b6bef00a192ec3b56f3cd04870cd5c, findElement {using=css selector, value=#breadcrumb-back-link}]&#10;Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 100.0.4896.127, chrome: {chromedriverVersion: 100.0.4896.20 (f9d71f93d32a..., userDataDir: C:\Windows\proxy\scoped_dir...}, goog:chromeOptions: {debuggerAddress: localhost:5015}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true, webdriver.remote.sessionid: 80f5d755e6b6bef00a192ec3b56...}&#10;Session ID: 80f5d755e6b6bef00a192ec3b56f3cd04870cd5c" type="org.openqa.selenium.NoSuchElementException">org.openqa.selenium.NoSuchElementException: 
+no such element: Unable to locate element: {"method":"css selector","selector":"#breadcrumb-back-link"}
+  (Session info: chrome=100.0.4896.127)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.8.1', revision: '8ebccac989'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '19.0.2'
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Command: [80f5d755e6b6bef00a192ec3b56f3cd04870cd5c, findElement {using=css selector, value=#breadcrumb-back-link}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 100.0.4896.127, chrome: {chromedriverVersion: 100.0.4896.20 (f9d71f93d32a..., userDataDir: C:\Windows\proxy\scoped_dir...}, goog:chromeOptions: {debuggerAddress: localhost:5015}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true, webdriver.remote.sessionid: 80f5d755e6b6bef00a192ec3b56...}
+Session ID: 80f5d755e6b6bef00a192ec3b56f3cd04870cd5c
+</error>
+  </testcase>
 </testsuite>

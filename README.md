@@ -1,2 +1,2 @@
 # Java | Maven | Cucumber | skeleton FW
-Skeleton FW ....
+Skeleton FW .... test

@@ -1,7 +1,7 @@
 Feature: Search For Product
 
   Background: Navigate to site
-    Given the user is on the website 'https://www.amazon.co.uk' using 'chrome'
+    Given the user is on the website 'https://www.amazon.co.uk' using 'remote'
 
   Scenario: Search for a Product
     When  the user searches for a product 'watch'
