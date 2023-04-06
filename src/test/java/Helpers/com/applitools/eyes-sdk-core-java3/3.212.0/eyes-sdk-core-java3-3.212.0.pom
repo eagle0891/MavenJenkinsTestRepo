@@ -1,0 +1,65 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>eyes-sdk-core-java3</artifactId>
+    <name>eyes-sdk-core-java3</name>
+    <url>http://www.applitools.com</url>
+
+    <description>Applitools Eyes SDK base for Java</description>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <parent>
+        <groupId>com.applitools</groupId>
+        <artifactId>eyes-sdk-java3-parent</artifactId>
+        <version>3.212.0</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.applitools</groupId>
+            <artifactId>eyes-ufg-java3</artifactId>
+            <version>3.212.0</version>
+            <!--This exclusion does nothing. We need it for running tests for all 3 connectivity packages-->
+            <exclusions>
+                <exclusion>
+                    <groupId>com.applitools</groupId>
+                    <artifactId>eyes-connectivity-java3-REPLACEMENT</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.applitools</groupId>
+            <artifactId>eyes-connectivity-java3-jersey2x</artifactId>
+            <version>3.212.0</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.0.2</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>test-jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+    </build>
+</project>

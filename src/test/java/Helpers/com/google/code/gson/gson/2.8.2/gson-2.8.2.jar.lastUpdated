@@ -1,0 +1,4 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Mon Feb 27 23:55:46 GMT 2023
+@default-central-https\://repo.maven.apache.org/maven2/.lastUpdated=1677542146817
+https\://repo.maven.apache.org/maven2/.error=Could not transfer artifact com.google.code.gson\:gson\:jar\:2.8.2 from/to central (https\://repo.maven.apache.org/maven2)\: C\:\\Users\\upa01\\.m2\\repository\\com\\google\\code\\gson\\gson\\2.8.2\\gson-2.8.2.jar (The requested operation cannot be performed on a file with a user-mapped section open)

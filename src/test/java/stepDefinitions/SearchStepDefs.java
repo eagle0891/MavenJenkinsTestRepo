@@ -54,6 +54,7 @@ public class SearchStepDefs extends BaseClass {
     @Then("^the PDP should be displayed$")
     public void pdpShouldBeDisplayed() {
         confirmPdpPageIsDisplayed();
+        quit();
     }
 
 //    @Given("^request contains contentType and requestBody, and request is sent to uri, and response returns status statusCode and body responseBody$")

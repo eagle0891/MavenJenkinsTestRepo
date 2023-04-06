@@ -9,6 +9,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.Browser;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -88,23 +89,10 @@ protected WebDriver driver;
             }
             case "seleniumGrid" -> {
                 //set up remote test envs
-                DesiredCapabilities caps = new DesiredCapabilities();
-                ChromeOptions options = new ChromeOptions();
-                options.addArguments("--ignore-ssl-errors=yes");
-                options.addArguments("--ignore-certificate-errors");
-                options.addArguments("--disable-web-security");
-                options.addArguments("--test-type");
-                options.addArguments("allow-running-insecure-content");
-                caps.setCapability(ChromeOptions.CAPABILITY, options);
-
-                caps.setCapability("browser", "chrome");
-                caps.setCapability("browser_version", "100");
-                caps.setCapability("os", "windows");
-                caps.setCapability("os_version", "11");
-                caps.setCapability("seleniumVersion", "4.2.2");
-                caps.setCapability("project", "BAT");
-                driver = new RemoteWebDriver(new URL("http://13.51.158.223:4445"), caps);
-                driver.manage().window().maximize();
+                ChromeOptions chromeOptions = new ChromeOptions();
+                chromeOptions.setCapability("platformName", "linux");
+                chromeOptions.setCapability("browserName", "chrome");
+                driver = new RemoteWebDriver(new URL("http://16.170.205.204:4445"), chromeOptions);
             }
         }
     }
