@@ -12,6 +12,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.Browser;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -150,43 +151,43 @@ protected WebDriver driver;
 
     public ArrayList<Product> getProducts() throws InterruptedException {
         Product.ProductCollection = new ArrayList<>();
-        String css = driver.findElement(SEARCH_RESULTS_LIST).getAttribute("class");
-        System.out.println("Search result CSS is: " + css);
-        waitForElementToDisplay(driver.findElement(SEARCH_RESULTS_LIST), 10);
-        WebElement searchResultsList = driver.findElement(SEARCH_RESULTS_LIST);
+        WebElement searchResultsList = waitUntilVisible(driver, SEARCH_RESULTS_LIST, Duration.ofSeconds(10));
         List<WebElement> products = searchResultsList.findElements(SEARCH_RESULT_ITEM);
         System.out.println("Number of products is: " + products.size());
         for (WebElement product : products) {
             try {
-                String productName = product.findElement(PLP_PRODUCT_NAME).getText();
-                String productWholePricePart = product.findElement(PLP_PRODUCT_WHOLE_PRICE).getText();
-                String productDecimalPricePart = product.findElement(PLP_PRODUCT_DECIMAL_PRICE).getText();
+                String productName = getText(product, PLP_PRODUCT_NAME);
+                String productWholePricePart = getText(product, PLP_PRODUCT_WHOLE_PRICE);
+                String productDecimalPricePart = getText(product, PLP_PRODUCT_DECIMAL_PRICE);
                 WebElement productImageLink = product.findElement(PLP_PRODUCT_IMAGE_LINK);
-                String productBrandName = product.findElement(PLP_PRODUCT_BRAND_NAME).getText();
+                String productBrandName = getText(product, PLP_PRODUCT_BRAND_NAME);
                 System.out.println("Brand is: " + productBrandName);
                 System.out.println("Product title is: " + productName);
                 System.out.println("Product Price is: £" + productWholePricePart + "." + productDecimalPricePart);
                 boolean isSamsung = productName.contains("Samsung");
-                WebElement samsungSelection = null;
-                if (isSamsung) {
-                    samsungSelection = product.findElement(PLP_PRODUCT_NAME);
-                }
+                WebElement samsungSelection = isSamsung ? product.findElement(PLP_PRODUCT_NAME) : null;
                 boolean isCasio = productName.contains("Casio");
-                WebElement casioSelection = null;
-                if (isCasio) {
-                    casioSelection = product.findElement(PLP_PRODUCT_NAME);
-                }
+                WebElement casioSelection = isCasio ? product.findElement(PLP_PRODUCT_NAME) : null;
                 boolean isGarmin = productName.contains("Garmin");
-                WebElement garminSelection = null;
-                if (isGarmin) {
-                    garminSelection = product.findElement(PLP_PRODUCT_NAME);
-                }
+                WebElement garminSelection = isGarmin ? product.findElement(PLP_PRODUCT_NAME) : null;
                 Product.ProductCollection.add(new Product(productName, productWholePricePart, productDecimalPricePart, isSamsung, product, samsungSelection, isCasio, casioSelection, productImageLink, isGarmin, garminSelection));
             } catch (NoSuchElementException e) {
                 LOG.info("**** Element does not contain a product ****");
             }
         }
         return Product.ProductCollection;
+    }
+
+    private String getText(WebElement element, By locator) {
+        try {
+            return element.findElement(locator).getText();
+        } catch (NoSuchElementException e) {
+            return "";
+        }
+    }
+
+    private WebElement waitUntilVisible(WebDriver driver, By locator, Duration timeoutInSeconds) {
+        return new WebDriverWait(driver, timeoutInSeconds).until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
     private static final String EXECUTED_STATEMENT_LOG = ReadFrom.propertiesFile("messageLogs", "executedStatementLog");
@@ -197,20 +198,23 @@ protected WebDriver driver;
         //clearProductCollectionIfPopulated();
         outer: for (Product product : Product.ProductCollection) {
             switch (productType) {
+                case "garmin" -> {
+                    if (product.isGarmin()) {
+                        System.out.println(productType + " - and - " + product);
+                        selectProduct(productType, product);
+                        break outer;
+                    }
+                }
                 case "samsung" -> {
                     if (product.isSamsung()) {
+                        System.out.println(productType + " - and - " + product);
                         selectProduct(productType, product);
                         break outer;
                     }
                 }
                 case "casio" -> {
                     if (product.isCasio()) {
-                        selectProduct(productType, product);
-                        break outer;
-                    }
-                }
-                case "garmin" -> {
-                    if (product.isGarmin()) {
+                        System.out.println(productType + " - and - " + product);
                         selectProduct(productType, product);
                         break outer;
                     }
@@ -220,7 +224,7 @@ protected WebDriver driver;
         }
     }
 
-    public void selectProduct(String productType, Product product) {
+    private void selectProduct(String productType, Product product) {
         System.out.println("*** " + productType + " " + EXECUTED_STATEMENT_LOG);
         LOG.info("** " + productType + " " + BRAND_FOUND_LOG);
         product.display();
