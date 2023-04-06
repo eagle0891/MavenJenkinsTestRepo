@@ -199,37 +199,19 @@ protected WebDriver driver;
             switch(productType){
                 case "samsung":
                     if (product.isSamsung()){
-                        System.out.println("*** " + productType + " " + EXECUTED_STATEMENT_LOG);
-                        LOG.info("** " + productType + " " + BRAND_FOUND_LOG);
-                        product.display();
-                        waitForElementToBeClickable(driver, product.getProductImageLink(), Duration.ofSeconds(10));
-//                        customerAction(click, product.getProductImageLink());
-                        product.getProductImageLink().click();
-                        LOG.info("** " + productType + " " + EXPECTED_BRAND_PDP_LOG);
+                        selectProduct(productType, product);
                         break outer;
                     }
                     break;
                 case "casio":
                     if (product.isCasio()){
-                        System.out.println("*** " + productType + " " + EXECUTED_STATEMENT_LOG);
-                        LOG.info("** " + productType + " " + BRAND_FOUND_LOG);
-                        product.display();
-                        waitForElementToBeClickable(driver, product.getProductImageLink(), Duration.ofSeconds(10));
-//                        customerAction(click, product.getProductImageLink());
-                        product.getProductImageLink().click();
-                        LOG.info("** " + productType + " " + EXPECTED_BRAND_PDP_LOG);
+                        selectProduct(productType, product);
                         break outer;
                     }
                     break;
                 case "garmin":
                     if (product.isGarmin()){
-                        System.out.println("*** " + productType + " " + EXECUTED_STATEMENT_LOG);
-                        LOG.info("** " + productType + " " + BRAND_FOUND_LOG);
-                        product.display();
-                        waitForElementToBeClickable(driver, product.getProductImageLink(), Duration.ofSeconds(10));
-//                        customerAction(click, product.getProductImageLink());
-                        product.getProductImageLink().click();
-                        LOG.info("** " + productType + " " + EXPECTED_BRAND_PDP_LOG);
+                        selectProduct(productType, product);
                         break outer;
                     }
                     break;
@@ -239,50 +221,13 @@ protected WebDriver driver;
         }
     }
 
-    public void findProductType(String productType) throws Exception {
-        //clearProductCollectionIfPopulated();
-        outer: for (Product product : Product.ProductCollection) {
-            switch(productType){
-                case "samsung":
-                    if (product.isSamsung()){
-                        System.out.println("*** " + productType + " " + EXECUTED_STATEMENT_LOG);
-                        LOG.info("** " + productType + " " + BRAND_FOUND_LOG);
-                        product.display();
-                        waitForElementToBeClickable(driver, product.getProductImageLink(), Duration.ofSeconds(10));
-//                        customerAction(click, product.getProductImageLink());
-                        product.getProductImageLink().click();
-                        LOG.info("** " + productType + " " + EXPECTED_BRAND_PDP_LOG);
-                        break outer;
-                    }
-                    break;
-                case "casio":
-                    if (product.isCasio()){
-                        System.out.println("*** " + productType + " " + EXECUTED_STATEMENT_LOG);
-                        LOG.info("** " + productType + " " + BRAND_FOUND_LOG);
-                        product.display();
-                        waitForElementToBeClickable(driver, product.getProductImageLink(), Duration.ofSeconds(10));
-//                        customerAction(click, product.getProductImageLink());
-                        product.getProductImageLink().click();
-                        LOG.info("** " + productType + " " + EXPECTED_BRAND_PDP_LOG);
-                        break outer;
-                    }
-                    break;
-                case "garmin":
-                    if (product.isGarmin()){
-                        System.out.println("*** " + productType + " " + EXECUTED_STATEMENT_LOG);
-                        LOG.info("** " + productType + " " + BRAND_FOUND_LOG);
-                        product.display();
-                        waitForElementToBeClickable(driver, product.getProductImageLink(), Duration.ofSeconds(10));
-//                        customerAction(click, product.getProductImageLink());
-                        product.getProductImageLink().click();
-                        LOG.info("** " + productType + " " + EXPECTED_BRAND_PDP_LOG);
-                        break outer;
-                    }
-                    break;
-                default:
-                    LOG.info("ERROR : Product type not recognised, please select a valid product type.");
-            }
-        }
+    public void selectProduct(String productType, Product product) {
+        System.out.println("*** " + productType + " " + EXECUTED_STATEMENT_LOG);
+        LOG.info("** " + productType + " " + BRAND_FOUND_LOG);
+        product.display();
+        waitForElementToBeClickable(driver, product.getProductImageLink(), Duration.ofSeconds(10));
+        product.getProductImageLink().click();
+        LOG.info("** " + productType + " " + EXPECTED_BRAND_PDP_LOG);
     }
 
     private static final By BREADCRUMB_BACK_LINK = By.cssSelector(ReadFrom.propertiesFile("css", "breadcrumbBackLink"));
