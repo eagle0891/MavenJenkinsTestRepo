@@ -196,27 +196,26 @@ protected WebDriver driver;
     public void findProductType(String productType) throws Exception {
         //clearProductCollectionIfPopulated();
         outer: for (Product product : Product.ProductCollection) {
-            switch(productType){
-                case "samsung":
-                    if (product.isSamsung()){
+            switch (productType) {
+                case "samsung" -> {
+                    if (product.isSamsung()) {
                         selectProduct(productType, product);
                         break outer;
                     }
-                    break;
-                case "casio":
-                    if (product.isCasio()){
+                }
+                case "casio" -> {
+                    if (product.isCasio()) {
                         selectProduct(productType, product);
                         break outer;
                     }
-                    break;
-                case "garmin":
-                    if (product.isGarmin()){
+                }
+                case "garmin" -> {
+                    if (product.isGarmin()) {
                         selectProduct(productType, product);
                         break outer;
                     }
-                    break;
-                default:
-                    LOG.info("ERROR : Product type not recognised, please select a valid product type.");
+                }
+                default -> LOG.info("ERROR : Product type not recognised, please select a valid product type.");
             }
         }
     }
