@@ -17,6 +17,7 @@ public class Product extends BaseClass {
     public static ArrayList<Product> ProductCollection;
     boolean isSamsung;
     boolean isCasio;
+    boolean isGarmin;
     String name;
     String description;
     String wholePrice;
@@ -25,8 +26,9 @@ public class Product extends BaseClass {
     WebElement samsungSelection;
     WebElement casioSelection;
     WebElement productImageLink;
+    WebElement garminSelection;
 
-    public Product(String productName, String productWholePricePart, String productDecimalPricePart, boolean isSamsung, WebElement product, WebElement samsungSelection, boolean isCasio, WebElement casioSelection, WebElement productImageLink) {
+    public Product(String productName, String productWholePricePart, String productDecimalPricePart, boolean isSamsung, WebElement product, WebElement samsungSelection, boolean isCasio, WebElement casioSelection, WebElement productImageLink, boolean isGarmin, WebElement garminSelection) {
         this.name = productName;
         this.wholePrice = productWholePricePart;
         this.decimalPricePart = productDecimalPricePart;
@@ -36,6 +38,8 @@ public class Product extends BaseClass {
         this.casioSelection = casioSelection;
         this.isCasio = isCasio;
         this.productImageLink = productImageLink;
+        this.garminSelection = garminSelection;
+        this.isGarmin = isGarmin;
         //add the image selector here somewhere as a webelement
     }
 

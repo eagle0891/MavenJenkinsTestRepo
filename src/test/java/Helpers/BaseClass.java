@@ -176,7 +176,12 @@ protected WebDriver driver;
                 if (isCasio) {
                     casioSelection = product.findElement(PLP_PRODUCT_NAME);
                 }
-                Product.ProductCollection.add(new Product(productName, productWholePricePart, productDecimalPricePart, isSamsung, product, samsungSelection, isCasio, casioSelection, productImageLink));
+                boolean isGarmin = productName.contains("Garmin");
+                WebElement garminSelection = null;
+                if (isGarmin) {
+                    garminSelection = product.findElement(PLP_PRODUCT_NAME);
+                }
+                Product.ProductCollection.add(new Product(productName, productWholePricePart, productDecimalPricePart, isSamsung, product, samsungSelection, isCasio, casioSelection, productImageLink, isGarmin, garminSelection));
             } catch (NoSuchElementException e) {
                 LOG.info("**** Element does not contain a product ****");
             }
@@ -209,6 +214,18 @@ protected WebDriver driver;
 //                        customerAction(click, product.getProductImageLink());
                         product.getProductImageLink().click();
                         LOG.info("** CASIO PDP SHOULD BE DISPLAYED **");
+                        break outer;
+                    }
+                    break;
+                case "garmin":
+                    if (product.isGarmin()){
+                        System.out.println("*** Garmin switch statement being executed ***");
+                        LOG.info("** GARMIN PRODUCT FOUND **");
+                        product.display();
+                        waitForElementToBeClickable(driver, product.getProductImageLink(), Duration.ofSeconds(10));
+//                        customerAction(click, product.getProductImageLink());
+                        product.getProductImageLink().click();
+                        LOG.info("** GARMIN PDP SHOULD BE DISPLAYED **");
                         break outer;
                     }
                     break;
