@@ -189,43 +189,93 @@ protected WebDriver driver;
         return Product.ProductCollection;
     }
 
+    private static final String EXECUTED_STATEMENT_LOG = ReadFrom.propertiesFile("messageLogs", "executedStatementLog");
+    private static final String BRAND_FOUND_LOG = ReadFrom.propertiesFile("messageLogs", "brandFoundLog");
+    private static final String EXPECTED_BRAND_PDP_LOG = ReadFrom.propertiesFile("messageLogs", "expectedBrandPDPLog");
+
     public void findProductType(String productType) throws Exception {
         //clearProductCollectionIfPopulated();
         outer: for (Product product : Product.ProductCollection) {
             switch(productType){
                 case "samsung":
                     if (product.isSamsung()){
-                        System.out.println("*** Samsung switch statement being executed ***");
-                        LOG.info("** SAMSUNG PRODUCT FOUND **");
+                        System.out.println("*** " + productType + " " + EXECUTED_STATEMENT_LOG);
+                        LOG.info("** " + productType + " " + BRAND_FOUND_LOG);
                         product.display();
                         waitForElementToBeClickable(driver, product.getProductImageLink(), Duration.ofSeconds(10));
 //                        customerAction(click, product.getProductImageLink());
                         product.getProductImageLink().click();
-                        LOG.info("** SAMSUNG PDP SHOULD BE DISPLAYED **");
+                        LOG.info("** " + productType + " " + EXPECTED_BRAND_PDP_LOG);
                         break outer;
                     }
                     break;
                 case "casio":
                     if (product.isCasio()){
-                        System.out.println("*** Casio switch statement being executed ***");
-                        LOG.info("** CASIO PRODUCT FOUND **");
+                        System.out.println("*** " + productType + " " + EXECUTED_STATEMENT_LOG);
+                        LOG.info("** " + productType + " " + BRAND_FOUND_LOG);
                         product.display();
                         waitForElementToBeClickable(driver, product.getProductImageLink(), Duration.ofSeconds(10));
 //                        customerAction(click, product.getProductImageLink());
                         product.getProductImageLink().click();
-                        LOG.info("** CASIO PDP SHOULD BE DISPLAYED **");
+                        LOG.info("** " + productType + " " + EXPECTED_BRAND_PDP_LOG);
                         break outer;
                     }
                     break;
                 case "garmin":
                     if (product.isGarmin()){
-                        System.out.println("*** Garmin switch statement being executed ***");
-                        LOG.info("** GARMIN PRODUCT FOUND **");
+                        System.out.println("*** " + productType + " " + EXECUTED_STATEMENT_LOG);
+                        LOG.info("** " + productType + " " + BRAND_FOUND_LOG);
                         product.display();
                         waitForElementToBeClickable(driver, product.getProductImageLink(), Duration.ofSeconds(10));
 //                        customerAction(click, product.getProductImageLink());
                         product.getProductImageLink().click();
-                        LOG.info("** GARMIN PDP SHOULD BE DISPLAYED **");
+                        LOG.info("** " + productType + " " + EXPECTED_BRAND_PDP_LOG);
+                        break outer;
+                    }
+                    break;
+                default:
+                    LOG.info("ERROR : Product type not recognised, please select a valid product type.");
+            }
+        }
+    }
+
+    public void findProductType(String productType) throws Exception {
+        //clearProductCollectionIfPopulated();
+        outer: for (Product product : Product.ProductCollection) {
+            switch(productType){
+                case "samsung":
+                    if (product.isSamsung()){
+                        System.out.println("*** " + productType + " " + EXECUTED_STATEMENT_LOG);
+                        LOG.info("** " + productType + " " + BRAND_FOUND_LOG);
+                        product.display();
+                        waitForElementToBeClickable(driver, product.getProductImageLink(), Duration.ofSeconds(10));
+//                        customerAction(click, product.getProductImageLink());
+                        product.getProductImageLink().click();
+                        LOG.info("** " + productType + " " + EXPECTED_BRAND_PDP_LOG);
+                        break outer;
+                    }
+                    break;
+                case "casio":
+                    if (product.isCasio()){
+                        System.out.println("*** " + productType + " " + EXECUTED_STATEMENT_LOG);
+                        LOG.info("** " + productType + " " + BRAND_FOUND_LOG);
+                        product.display();
+                        waitForElementToBeClickable(driver, product.getProductImageLink(), Duration.ofSeconds(10));
+//                        customerAction(click, product.getProductImageLink());
+                        product.getProductImageLink().click();
+                        LOG.info("** " + productType + " " + EXPECTED_BRAND_PDP_LOG);
+                        break outer;
+                    }
+                    break;
+                case "garmin":
+                    if (product.isGarmin()){
+                        System.out.println("*** " + productType + " " + EXECUTED_STATEMENT_LOG);
+                        LOG.info("** " + productType + " " + BRAND_FOUND_LOG);
+                        product.display();
+                        waitForElementToBeClickable(driver, product.getProductImageLink(), Duration.ofSeconds(10));
+//                        customerAction(click, product.getProductImageLink());
+                        product.getProductImageLink().click();
+                        LOG.info("** " + productType + " " + EXPECTED_BRAND_PDP_LOG);
                         break outer;
                     }
                     break;
