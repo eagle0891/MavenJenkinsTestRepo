@@ -170,16 +170,19 @@ protected WebDriver driver;
                 WebElement samsungSelection = null;
                 if (isSamsung) {
                     samsungSelection = product.findElement(PLP_PRODUCT_NAME);
+                    System.out.println(PLP_PRODUCT_NAME);
                 }
                 boolean isCasio = productName.contains("Casio");
                 WebElement casioSelection = null;
                 if (isCasio) {
                     casioSelection = product.findElement(PLP_PRODUCT_NAME);
+                    System.out.println(PLP_PRODUCT_NAME);
                 }
                 boolean isGarmin = productName.contains("Garmin");
                 WebElement garminSelection = null;
                 if (isGarmin) {
                     garminSelection = product.findElement(PLP_PRODUCT_NAME);
+                    System.out.println(PLP_PRODUCT_NAME);
                 }
                 Product.ProductCollection.add(new Product(productName, productWholePricePart, productDecimalPricePart, isSamsung, product, samsungSelection, isCasio, casioSelection, productImageLink, isGarmin, garminSelection));
             } catch (NoSuchElementException e) {
@@ -198,25 +201,37 @@ protected WebDriver driver;
         outer: for (Product product : Product.ProductCollection) {
             switch(productType){
                 case "samsung":
-                    if (product.isSamsung()){
-                    selectProduct("*** " + productType + " " + EXECUTED_STATEMENT_LOG,
-                            "*** " + productType + " " + BRAND_FOUND_LOG,
-                            "*** " + productType + " " + EXPECTED_BRAND_PDP_LOG);
+                    if (product.isSamsung()) {
+//                    selectProduct("*** " + productType + " " + EXECUTED_STATEMENT_LOG,
+//                            "*** " + productType + " " + BRAND_FOUND_LOG,
+//                            "*** " + productType + " " + EXPECTED_BRAND_PDP_LOG);
+                        System.out.println("*** " + productType + " " + EXECUTED_STATEMENT_LOG);
+                        LOG.info("*** " + productType + " " + BRAND_FOUND_LOG);
+                        product.display();
+                        waitForElementToBeClickable(driver, product.getProductImageLink(), Duration.ofSeconds(10));
+                        product.getProductImageLink().click();
+                        LOG.info("*** " + productType + " " + EXPECTED_BRAND_PDP_LOG);
                         break outer;
                     }
                     break;
                 case "casio":
                     if (product.isCasio()){
-                        selectProduct("*** " + productType + " " + EXECUTED_STATEMENT_LOG,
-                                "*** " + productType + " " + BRAND_FOUND_LOG,
-                                "*** " + productType + " " + EXPECTED_BRAND_PDP_LOG);
+                        System.out.println("*** " + productType + " " + EXECUTED_STATEMENT_LOG);
+                        LOG.info("*** " + productType + " " + BRAND_FOUND_LOG);
+                        product.display();
+                        waitForElementToBeClickable(driver, product.getProductImageLink(), Duration.ofSeconds(10));
+                        product.getProductImageLink().click();
+                        LOG.info("*** " + productType + " " + EXPECTED_BRAND_PDP_LOG);
                         break outer;
                     }
                 case "garmin":
                     if (product.isGarmin()){
-                        selectProduct("*** " + productType + " " + EXECUTED_STATEMENT_LOG,
-                                "*** " + productType + " " + BRAND_FOUND_LOG,
-                                "*** " + productType + " " + EXPECTED_BRAND_PDP_LOG);
+                        System.out.println("*** " + productType + " " + EXECUTED_STATEMENT_LOG);
+                        LOG.info("*** " + productType + " " + BRAND_FOUND_LOG);
+                        product.display();
+                        waitForElementToBeClickable(driver, product.getProductImageLink(), Duration.ofSeconds(10));
+                        product.getProductImageLink().click();
+                        LOG.info("*** " + productType + " " + EXPECTED_BRAND_PDP_LOG);
                         break outer;
                     }
                     break;
