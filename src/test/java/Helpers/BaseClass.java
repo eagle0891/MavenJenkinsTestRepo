@@ -165,11 +165,20 @@ protected WebDriver driver;
                 System.out.println("Product title is: " + productName);
                 System.out.println("Product Price is: £" + productWholePricePart + "." + productDecimalPricePart);
                 boolean isSamsung = productName.contains("Samsung");
-                WebElement samsungSelection = isSamsung ? product.findElement(PLP_PRODUCT_NAME) : null;
+                WebElement samsungSelection = null;
+                if (isSamsung) {
+                    samsungSelection = product.findElement(PLP_PRODUCT_NAME);
+                }
                 boolean isCasio = productName.contains("Casio");
-                WebElement casioSelection = isCasio ? product.findElement(PLP_PRODUCT_NAME) : null;
+                WebElement casioSelection = null;
+                if (isCasio) {
+                    casioSelection = product.findElement(PLP_PRODUCT_NAME);
+                }
                 boolean isGarmin = productName.contains("Garmin");
-                WebElement garminSelection = isGarmin ? product.findElement(PLP_PRODUCT_NAME) : null;
+                WebElement garminSelection = null;
+                if (isGarmin) {
+                    garminSelection = product.findElement(PLP_PRODUCT_NAME);
+                }
                 Product.ProductCollection.add(new Product(productName, productWholePricePart, productDecimalPricePart, isSamsung, product, samsungSelection, isCasio, casioSelection, productImageLink, isGarmin, garminSelection));
             } catch (NoSuchElementException e) {
                 LOG.info("**** Element does not contain a product ****");
@@ -198,28 +207,25 @@ protected WebDriver driver;
         //clearProductCollectionIfPopulated();
         outer: for (Product product : Product.ProductCollection) {
             switch (productType) {
-                case "garmin" -> {
+                case "garmin":
                     if (product.isGarmin()) {
                         System.out.println(productType + " - and - " + product);
                         selectProduct(productType, product);
                         break outer;
                     }
-                }
-                case "samsung" -> {
+                case "samsung":
                     if (product.isSamsung()) {
                         System.out.println(productType + " - and - " + product);
                         selectProduct(productType, product);
                         break outer;
                     }
-                }
-                case "casio" -> {
+                case "casio":
                     if (product.isCasio()) {
                         System.out.println(productType + " - and - " + product);
                         selectProduct(productType, product);
                         break outer;
                     }
-                }
-                default -> LOG.info("ERROR : Product type not recognised, please select a valid product type.");
+                default: LOG.info("ERROR : Product type not recognised, please select a valid product type.");
             }
         }
     }
