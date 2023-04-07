@@ -207,24 +207,27 @@ protected WebDriver driver;
         //clearProductCollectionIfPopulated();
         outer: for (Product product : Product.ProductCollection) {
             switch (productType) {
-                case "garmin":
-                    if (product.isGarmin()) {
-                        System.out.println(productType + " - and - " + product);
-                        selectProduct(productType, product);
-                        break outer;
-                    }
-                case "samsung":
-                    if (product.isSamsung()) {
-                        System.out.println(productType + " - and - " + product);
-                        selectProduct(productType, product);
-                        break outer;
-                    }
                 case "casio":
                     if (product.isCasio()) {
                         System.out.println(productType + " - and - " + product);
                         selectProduct(productType, product);
                         break outer;
                     }
+                    break;
+                case "samsung":
+                    if (product.isSamsung()) {
+                        System.out.println(productType + " - and - " + product);
+                        selectProduct(productType, product);
+                        break outer;
+                    }
+                    break;
+                case "garmin":
+                    if (product.isGarmin()) {
+                        System.out.println(productType + " - and - " + product);
+                        selectProduct(productType, product);
+                        break outer;
+                    }
+                    break;
                 default: LOG.info("ERROR : Product type not recognised, please select a valid product type.");
             }
         }
