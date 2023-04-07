@@ -165,20 +165,11 @@ protected WebDriver driver;
                 System.out.println("Product title is: " + productName);
                 System.out.println("Product Price is: £" + productWholePricePart + "." + productDecimalPricePart);
                 boolean isSamsung = productName.contains("Samsung");
-                WebElement samsungSelection = null;
-                if (isSamsung) {
-                    samsungSelection = product.findElement(PLP_PRODUCT_NAME);
-                }
+                WebElement samsungSelection = isSamsung ? product.findElement(PLP_PRODUCT_NAME) : null;
                 boolean isCasio = productName.contains("Casio");
-                WebElement casioSelection = null;
-                if (isCasio) {
-                    casioSelection = product.findElement(PLP_PRODUCT_NAME);
-                }
+                WebElement casioSelection = isCasio ? product.findElement(PLP_PRODUCT_NAME) : null;
                 boolean isGarmin = productName.contains("Garmin");
-                WebElement garminSelection = null;
-                if (isGarmin) {
-                    garminSelection = product.findElement(PLP_PRODUCT_NAME);
-                }
+                WebElement garminSelection = isGarmin ? product.findElement(PLP_PRODUCT_NAME) : null;
                 Product.ProductCollection.add(new Product(productName, productWholePricePart, productDecimalPricePart, isSamsung, product, samsungSelection, isCasio, casioSelection, productImageLink, isGarmin, garminSelection));
             } catch (NoSuchElementException e) {
                 LOG.info("**** Element does not contain a product ****");
@@ -207,6 +198,13 @@ protected WebDriver driver;
         //clearProductCollectionIfPopulated();
         outer: for (Product product : Product.ProductCollection) {
             switch (productType) {
+                case "garmin":
+                    if (product.isGarmin()) {
+                        System.out.println(productType + " - and - " + product);
+                        selectProduct(productType, product);
+                        break outer;
+                    }
+                    break;
                 case "casio":
                     if (product.isCasio()) {
                         System.out.println(productType + " - and - " + product);
@@ -216,13 +214,6 @@ protected WebDriver driver;
                     break;
                 case "samsung":
                     if (product.isSamsung()) {
-                        System.out.println(productType + " - and - " + product);
-                        selectProduct(productType, product);
-                        break outer;
-                    }
-                    break;
-                case "garmin":
-                    if (product.isGarmin()) {
                         System.out.println(productType + " - and - " + product);
                         selectProduct(productType, product);
                         break outer;
